@@ -5,49 +5,28 @@
 #include <QFile>
 #include <QTextStream>
 #include <QFileDialog>
+#include <QPainter>
+#include <QTimer>
+#include "actacierre.h"
 
-Ventana::Ventana(Objeto *obj, QWidget *parent)
+Ventana::Ventana( QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Ventana)
 {
+    objeto = new Objeto();
 
-    this->obj=obj;
     ui->setupUi(this);
     connect(ui->pbGeneral, SIGNAL(clicked()),this, SLOT(slot_general()));
     connect(ui->pbGuardar, SIGNAL(clicked()),this, SLOT(slot_guardar()));
     connect(ui->pbRequerido, SIGNAL(clicked()),this, SLOT(slot_requeridos()));
     connect(ui->pbRequirente, SIGNAL(clicked()),this, SLOT(slot_requirentes()));
-    obj->texto_final->append("<div style=\"position:absolute;left:72.02px;top:456.95px\" class=\"cls_002\"><span class=\"cls_002\">OBSERVACIONES</span><span class=\"cls_003\">:</span></div>"
-                                "<div style=\"position:absolute;left:72.02px;top:478.67px\" class=\"cls_004\"><span class=\"cls_004\">Se deja constancia que el/la/los requirentes/actor/es Sres/as._______________________; y</span></div>"
-                                "<div style=\"position:absolute;left:72.02px;top:492.47px\" class=\"cls_004\"><span class=\"cls_004\">el/la/los requeridos/demandado/s__________________________________________y los/as</span></div>"
-                                "<div style=\"position:absolute;left:72.02px;top:506.27px\" class=\"cls_004\"><span class=\"cls_004\">abogados/as _________________________han sido debidamente informados del principio de</span></div>"
-                                "<div style=\"position:absolute;left:72.02px;top:520.07px\" class=\"cls_004\"><span class=\"cls_004\">confidencialidad que rige el proceso de mediación (arts.</span></div>"
-                                "<div style=\"position:absolute;left:366.95px;top:520.07px\" class=\"cls_004\"><span class=\"cls_004\">3 y 4 de la ley 10.543 y Dec.</span></div>"
-                                "<div style=\"position:absolute;left:72.02px;top:533.90px\" class=\"cls_004\"><span class=\"cls_004\">Reglamentario 1705/18, arts. 4 y 5 ley 8858 y art.156 del Código Penal) y que  leído el convenio</span></div>"
-                                "<div style=\"position:absolute;left:72.02px;top:547.70px\" class=\"cls_004\"><span class=\"cls_004\">de confidencialidad en la audiencia celebrada el día</span></div>"
-                                "<div style=\"position:absolute;left:351.88px;top:547.70px\" class=\"cls_004\"><span class=\"cls_004\">_____________________, bajo la</span></div>"
-                                "<div style=\"position:absolute;left:72.02px;top:561.50px\" class=\"cls_004\"><span class=\"cls_004\">modalidad de mediación virtual, han manifestando respetar,  prestando conformidad.</span></div>"
-                                "<div style=\"position:absolute;left:72.02px;top:583.34px\" class=\"cls_004\"><span class=\"cls_004\">Asimismo, que los mediadores intervinientes, han realizado  captura o print de pantalla de la</span></div>"
-                                "<div style=\"position:absolute;left:72.02px;top:597.14px\" class=\"cls_004\"><span class=\"cls_004\">reunión realizada, con el único fin de acreditar la identidad y  asistencia de las partes y sus</span></div>"
-                                "<div style=\"position:absolute;left:72.02px;top:610.94px\" class=\"cls_004\"><span class=\"cls_004\">letrados.</span></div>"
-                                "<div style=\"position:absolute;left:90.02px;top:632.90px\" class=\"cls_005\"><span class=\"cls_005\">-</span></div>"
-                                "<div style=\"position:absolute;left:108.02px;top:632.90px\" class=\"cls_004\"><span class=\"cls_004\">Las </span><span class=\"cls_003\">partes </span><span class=\"cls_004\">se comprometen </span><span class=\"cls_003\">a remitir el convenio de confidencialidad,  ratificar tal</span></div>"
-                                "<div style=\"position:absolute;left:108.02px;top:646.70px\" class=\"cls_003\"><span class=\"cls_003\">acto,  como así también la asistencia a la audiencia</span><span class=\"cls_004\"> a través de correo electrónico</span></div>"
-                                "<div style=\"position:absolute;left:108.02px;top:660.50px\" class=\"cls_004\"><span class=\"cls_004\">desde su casilla personal, asumiendo dicho acto el valor de  Declaración Jurada.</span></div>"
-                                "<div style=\"position:absolute;left:90.02px;top:674.54px\" class=\"cls_005\"><span class=\"cls_005\">-</span></div>"
-                                "<div style=\"position:absolute;left:108.02px;top:674.54px\" class=\"cls_004\"><span class=\"cls_004\">Los/as </span><span class=\"cls_003\"> letrados  intervinientes  y  los/as  mediadores</span><span class=\"cls_004\">  también  efectuarán  dicha</span></div>"
-                                "<div style=\"position:absolute;left:108.02px;top:688.34px\" class=\"cls_004\"><span class=\"cls_004\">ratificación,  a través de una presentación en la plataforma electrónica (arts. 2, 3 y 11</span></div>"
-                                "<div style=\"position:absolute;left:108.02px;top:702.16px\" class=\"cls_004\"><span class=\"cls_004\">Reglamento de EE.).</span></div>"
-                                "<div style=\"position:absolute;left:72.02px;top:724.00px\" class=\"cls_004\"><span class=\"cls_004\">Asimismo todas las partes manifiestan que se encuentran notificadas del nuevo día y hora de</span></div>"
-                                "<div style=\"position:absolute;left:72.02px;top:737.80px\" class=\"cls_004\"><span class=\"cls_004\">audiencia para el________________________ quedando debidamente notificadas en este acto.</span></div>"
-                                "</div>"
-                                "<div style=\"position:absolute;left:50%;margin-left:-297px;top:851px;width:595px;height:841px;border-style:outset;overflow:hidden\">"
-                                "<div style=\"position:absolute;left:0px;top:0px\></div>"
-                                "</div>"
-                                "</body>"
-                                "</html>");
-
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(slot_mostrar()));
+    timer->start(1000);
+    this->setMinimumSize(700,300);
 }
+
+
 
 Ventana::~Ventana()
 {
@@ -56,10 +35,8 @@ Ventana::~Ventana()
 
 void Ventana::slot_general()
 {
-
     General * general = new General(objeto);
     general->show();
-
 }
 
 void Ventana::slot_requeridos()
@@ -78,34 +55,132 @@ void Ventana::slot_requirentes()
 
 void Ventana::slot_guardar()
 {
-    qDebug()<<"Guardar";
-    QByteArray * html = new QByteArray;
-    //html->append(obj->texto_general);
-    //html->append(obj->texto_requeridos);
-    //html->append(obj->texto_requirentes);
+    QString nombre = QFileDialog::getSaveFileName(this,tr("Guardar"), "../", tr("PDF Files (*.pdf)"));
 
-    html->append("<div style=\"position:absolute;left:0px;top:0px\"></div>"
-                        "</div>"
-                        "</body>"
-                        "</html>");
-    //Los datos generales solo se cargan una vez, si se vuele a abrir la ventana debo actualizar los datos
-    //Los datos requirentes y requeridos son varios y se deben agregar todos
-    //Al final agrego lineas necesiras para terminal el html
+    QString html = mostrar ();
+            ui->text->setHtml(html);
+            QTextDocument document;
+            document.setHtml(html);
 
-    ui->text->setHtml(*html);
-    //para convertir de Html a pdf
-    QTextDocument document;
-    document.setHtml(*html);
-    QPrinter printer(QPrinter::PrinterResolution);
-    printer.setOutputFormat(QPrinter::PdfFormat);
-    printer.setPaperSize(QPrinter::A4);
-    printer.setOutputFileName(QFileDialog::getSaveFileName(this, "Guardar")+ ".pdf");
-    printer.setPageMargins(QMarginsF(15, 15, 15, 15));
+            QPrinter printer(QPrinter::PrinterResolution);
+            printer.setOutputFormat(QPrinter::PdfFormat);
+            printer.setPaperSize(QPrinter::A4);
 
-    document.print(&printer);
-    qDebug()<<"listo";
+            printer.setOutputFileName(nombre + ".pdf");
+            printer.setPageMargins(QMarginsF(15, 15, 15, 15));
+
+            document.print(&printer);
+            qDebug()<<"listo";
 }
 
+void Ventana::slot_mostrar()
+{
+    ui->text->setHtml(mostrar());
+}
 
+QString Ventana::mostrar()
+{
+    ui->text->clear();
+    QString html ="<style>"
+                  "#identified  {background-color: black;"
+                  "color: white}"
+                  "</style>"
+                  "<body><b>FORMULARIO DE ACREDITACIÓN Y/O FIJACIÓN DE NUEVO DÍA Y HORA DE REUNIÓN BAJO MODALIDAD VIRTUAL. </b>"
+                 "<p> Legajo N°  Autos  “";
+                 html.push_back(objeto->N_Legajo+"<br>");
 
+                 html.push_back("Acuerdo Reglamentario N°: "+ objeto->N_Acuerdo + ", Hora de inicio: "+ objeto->H_Inicio +
+                 ", Hora de finalización: " + objeto->H_Cierre + "<br>"
+                 "<b>Nuevo reunión, fecha " + objeto->Fecha + " hs </b><br>");
+                 QString NombreRequeridos;
+                 QString NombreRequirentes;
+                 QString NombreAbogados;
+                qDebug()<<objeto->requirentes.size();
+                if(objeto->requirentes.count()>0){
+                    for (int i = 0; i < objeto->requirentes.size();i++) {
+                       qDebug()<<"valor i : "<<i;
+                       html.push_back("<br><b>Actor/ requirente  " + objeto->requirentes[i].NOMBRE + " </b><br>"
+                       "DNI/CUIL:" + objeto->requirentes[i].N_DNI + "<br>"
+                       "Domicilio real:" + objeto->requirentes[i].Domicilio_R + "<br>"
+                       "Correo electrónico: " + objeto->requirentes[i].Correo_E+ "<br>"
+                       "Celular: " + objeto->requirentes[i].Celular+ "<br>"
+                       "Letrado: " + objeto->requirentes[i].Letrado + "<br>"
+                       "Domicilio legal: " + objeto->requirentes[i].Domicilio_L + "<br>"
+                       "Correo electrónico: " + objeto->requirentes[i].Correo_E_L + "<br>"
+                       "Celular: " + objeto->requirentes[i].Celular_L + "<br>");
+                       NombreRequeridos.append(objeto->requirentes[i].NOMBRE );
+                       NombreAbogados.append(objeto->requirentes[i].Letrado);
 
+                       if(i==objeto->requirentes.size()){
+                           NombreRequeridos.append(", ");
+                       }
+
+                   }
+
+                }
+                if(objeto->requeridos.count()>0){
+                     for (int i = 0; i < objeto->requeridos.size();i++) {
+                        html.push_back("<b>Demandada/ requerida  " + objeto->requeridos[i].NOMBRE + " </b><br>"
+                        "DNI (si es persona jurídica corresponde consignar el del Representante Legal):" + objeto->requeridos[i].N_DNI + "<br>"
+                        "Domicilio real:" + objeto->requeridos[i].Domicilio_R + "<br>"
+                        "Correo electrónico: " + objeto->requeridos[i].Correo_E+ "<br>"
+                        "Celular: " + objeto->requeridos[i].Celular+ "<br>"
+                        "Letrado: " + objeto->requeridos[i].Letrado + "<br>"
+                        "Domicilio legal: " + objeto->requeridos[i].Domicilio_L + "<br>"
+                        "Correo electrónico: " + objeto->requeridos[i].Correo_E_L + "<br>"
+                        "Celular:" + objeto->requeridos[i].Celular_L + "<br><br>");
+                        NombreRequirentes.append(objeto->requeridos[i].NOMBRE+" " );
+                        NombreAbogados.append( objeto->requirentes[i].Letrado+" " );
+                        if(i==objeto->requeridos.size()){
+                            NombreRequirentes.append(", ");
+                            NombreAbogados.append(",");
+                        }
+                    }
+                }
+
+                html.push_back(
+                   "<p background-color: coral ><b>OBSERVACIONES:</b><br>"
+                   " Se deja constancia que el/la/los requirentes/actor/es Sres./as. " + NombreRequeridos  + "; y el/la/los requeridos demandados " + NombreRequirentes + "y los/as abogados/as " + NombreAbogados + " "
+                   "han sido debidamente informados del principio de confidencialidad  que rige el proceso de mediación (arts.  3 y 4 de la ley 10.543 y Dec. Reglamentario 1705/18, arts. 4 y 5"
+                   " ley 8858 y art.156 del Código Penal) y que leído el convenio de confidencialidad en la audiencia celebrada el día " + objeto->Fecha + ", bajo la modalidad de mediación"
+                   " virtual, han manifestado respetar, prestando conformidad. "
+                   "Asimismo, que los mediadores intervinientes, han realizado captura o print de pantalla de la reunión realizada, con el único fin \"de acreditar la identidad y asistencia de "
+                   "las partes y sus letrados.</p>"
+                   "<ul><li>Las <b>partes </b> se comprometen <b>a remitir el convenio de confidencialidad, ratificar tal acto,  como así también la \"asistencia a la audiencia </b> a través de "
+                   "correo electrónico desde su casilla personal, asumiendo dicho acto el valor de " "Declaración Jurada.\"</li>"
+                   "<li>Los/as <b> letrados intervinientes y los/as mediadores </b>"
+                   " también efectuarán dicha ratificación, a través de una " "presentación en la plataforma electrónica (arts. 2, "
+                   "3 y 11 Reglamento de EE.).</li></ul>  "
+                   "<p>Asimismo todas las partes manifiestan que se encuentran notificadas del nuevo día y hora de audiencia para el " +  objeto->FechaActual +" quedando debidamente notificadas en este acto.</p></body>");
+            return html;
+}
+
+void Ventana::on_actionGuardar_triggered()
+{
+    slot_guardar();
+}
+
+void Ventana::on_actionCerrar_triggered()
+{
+    close();
+}
+
+void Ventana::on_actionNuevo_triggered()
+{
+    objeto->N_Legajo="";
+    objeto->N_Acuerdo="";
+    objeto->H_Inicio="";
+    objeto->H_Cierre="";
+    objeto->Fecha="";
+    objeto->FechaActual="";
+
+    objeto->requirentes.clear();
+    objeto->requeridos.clear();
+}
+
+void Ventana::on_pushButton_clicked()
+{
+    ActaCierre * actacierre = new ActaCierre(objeto);
+    actacierre->show();
+
+}

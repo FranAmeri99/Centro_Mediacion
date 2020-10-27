@@ -69,7 +69,7 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>DNI:</string>
+        <string>DNI/CUIT:</string>
        </property>
       </widget>
      </item>
@@ -118,6 +118,15 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>lNombre</tabstop>
+  <tabstop>lDNI</tabstop>
+  <tabstop>lDomicioR</tabstop>
+  <tabstop>lCorreo1</tabstop>
+  <tabstop>lCelular1</tabstop>
+  <tabstop>lLetrado</tabstop>
+  <tabstop>lDomicilioL</tabstop>
+  <tabstop>lCorreo2</tabstop>
+  <tabstop>lCelular2</tabstop>
   <tabstop>pbGuardar</tabstop>
  </tabstops>
  <resources/>

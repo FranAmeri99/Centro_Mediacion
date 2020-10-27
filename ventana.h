@@ -19,9 +19,9 @@ class Ventana : public QMainWindow
     Q_OBJECT
 
 public:
-    Ventana(Objeto* obj = nullptr, QWidget *parent = nullptr);
-    Objeto * obj;
-
+    Ventana(QWidget *parent = nullptr);
+    Objeto * objeto;
+    QString mostrar();
     ~Ventana();
 
 private slots:
@@ -29,9 +29,17 @@ private slots:
     void slot_requeridos();
     void slot_requirentes();
     void slot_guardar();
+    void slot_mostrar();
+
+    void on_actionGuardar_triggered();
+
+    void on_actionCerrar_triggered();
+
+    void on_actionNuevo_triggered();
+
+    void on_pushButton_clicked();
 
 private:
-    Objeto * objeto;
     Ui::Ventana *ui;
 };
 #endif // VENTANA_H

@@ -1,7 +1,7 @@
 QT       += core gui printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
+INCLUDEPATH += $$PWD
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -16,24 +16,45 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    actacierre.cpp \
+    constancias.cpp \
     general.cpp \
+    honorario.cpp \
+    informacioncierre.cpp \
     main.cpp \
+    multa.cpp \
     objeto.cpp \
     persona.cpp \
+    tasa.cpp \
     ventana.cpp
 
 HEADERS += \
+    actacierre.h \
+    constancias.h \
     general.h \
+    honorario.h \
+    informacioncierre.h \
+    multa.h \
     objeto.h \
     persona.h \
+    tasa.h \
     ventana.h
 
 FORMS += \
+    actacierre.ui \
+    constancias.ui \
     general.ui \
+    honorario.ui \
+    informacioncierre.ui \
+    multa.ui \
     persona.ui \
+    tasa.ui \
     ventana.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    Recursos.qrc

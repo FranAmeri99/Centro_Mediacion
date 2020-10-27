@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>InformacionCierre</class>
+ <widget class="QWidget" name="InformacionCierre">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1020</width>
+    <height>580</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>INFORMACIÓN DE LA MEDIACIÓN</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Fecha de la última reunión:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Rubros acordados:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QPushButton" name="pbAgregarRubro">
+       <property name="text">
+        <string>Agregar Rubro Acordado</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Transcripción del texto del acuerdo:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lCantidad"/>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Cantidad de reuniones realizadas:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Alcance de la pretensión: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QPushButton" name="pbAgregarNoRubro">
+       <property name="text">
+        <string>Agregar Rubro No Acordados</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QPushButton" name="pbAgregarTexto">
+       <property name="text">
+        <string>Agregar texto del acuerdo:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>¿El requerido manifestó su voluntad de reconvenir?</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="comboBox">
+       <item>
+        <property name="text">
+         <string>Con acuerdo total</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Con acuerdo parcial</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Sin acuerdo por decisión de las partes</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>SIn acuerdo por vencimiento del plazo</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Sin acuerdo por inasistencia del requerido</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Sin acuerdo por inasistencia del requirente</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Sin acuerdo por inasistencia de todas las partes</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Sin acuerdo por imposibilidad de notificar</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Fecha de la primera reunión:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QDateEdit" name="dUltima"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Rubros no acordados:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="lMonto"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="QDateEdit" name="dPrimera"/>
+     </item>
+     <item row="8" column="1">
+      <widget class="QComboBox" name="comboBox2">
+       <item>
+        <property name="text">
+         <string>Si</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>No</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Resultado de la Mediación:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Monto del acuerdo:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QPushButton" name="pbAgregarAlcance">
+       <property name="text">
+        <string>Agregar Alcance de la presentacion</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0" colspan="2">
+      <widget class="QPushButton" name="pbGuardar">
+       <property name="text">
+        <string>Guardar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

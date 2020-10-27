@@ -16,7 +16,7 @@ public:
     explicit General(Objeto * obj  = nullptr  ,QWidget *parent = nullptr);
     Objeto * obj;
     ~General();
-    QByteArray * inicio;
+    QByteArray inicio;
 private slots:
     void on_Guardar_clicked();
 

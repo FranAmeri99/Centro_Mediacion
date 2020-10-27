@@ -16,13 +16,33 @@
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout">
-     <item row="3" column="1">
-      <widget class="QTimeEdit" name="tFin"/>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Legajo N°  Autos  </string>
+       </property>
+      </widget>
      </item>
-     <item row="2" column="1">
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Acuerdo Reglamentario N°</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
       <widget class="QTimeEdit" name="tNueva"/>
      </item>
-     <item row="4" column="0">
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lLegajoN"/>
+     </item>
+     <item row="5" column="1">
+      <widget class="QDateTimeEdit" name="tFecha"/>
+     </item>
+     <item row="4" column="1">
+      <widget class="QTimeEdit" name="tFin"/>
+     </item>
+     <item row="5" column="0">
       <widget class="QLabel" name="label_5">
        <property name="layoutDirection">
         <enum>Qt::LeftToRight</enum>
@@ -35,46 +55,36 @@
      <item row="1" column="1">
       <widget class="QLineEdit" name="lNumeroA"/>
      </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Legajo N°  Autos  </string>
-       </property>
-      </widget>
-     </item>
      <item row="3" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Hora de finalización:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
         <string>Hora de inicio:</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="lLegajoN"/>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Hora de finalización:</string>
+       </property>
+      </widget>
      </item>
-     <item row="6" column="0" colspan="2">
+     <item row="7" column="0" colspan="2">
       <widget class="QPushButton" name="Guardar">
        <property name="text">
         <string>Guardar</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_4">
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_6">
        <property name="text">
-        <string>Acuerdo Reglamentario N°</string>
+        <string>Fecha</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
-      <widget class="QDateTimeEdit" name="tFecha"/>
+     <item row="2" column="1">
+      <widget class="QDateEdit" name="tFechaActual"/>
      </item>
     </layout>
    </item>

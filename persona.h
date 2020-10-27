@@ -18,9 +18,9 @@ public:
     Objeto * obj;
     bool * tipo;
     Objeto::per p1;
-    QByteArray * requeridos;
-    QByteArray * requirentes;
-    QByteArray * inicio;
+    Objeto::per p2;
+    QByteArray requeridos;
+    QByteArray requirentes;
 
 private slots:
     void on_pbGuardar_clicked();

@@ -9,9 +9,7 @@ int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
-    Objeto * objeto = new Objeto;
-
-    Ventana * w = new Ventana(objeto);
+    Ventana * w = new Ventana();
     w->show();
     return a.exec();
 }

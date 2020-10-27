@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>606</width>
-    <height>323</height>
+    <width>972</width>
+    <height>397</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Ventana</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Recursos.qrc">
+    <normaloff>:/huevo.png</normaloff>:/huevo.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -27,6 +31,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="pbRequirente">
+          <property name="text">
+           <string>Agregar Requirente</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="pbRequerido">
           <property name="text">
            <string>Agregar Requerido</string>
@@ -34,9 +45,9 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pbRequirente">
+         <widget class="QPushButton" name="pushButton">
           <property name="text">
-           <string>Agregar Requirente</string>
+           <string>Generar Acta de Cierre</string>
           </property>
          </widget>
         </item>
@@ -61,7 +72,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>606</width>
+     <width>972</width>
      <height>21</height>
     </rect>
    </property>
@@ -133,9 +144,10 @@
  <tabstops>
   <tabstop>pbGeneral</tabstop>
   <tabstop>pbRequerido</tabstop>
-  <tabstop>pbRequirente</tabstop>
   <tabstop>pbGuardar</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="Recursos.qrc"/>
+ </resources>
  <connections/>
 </ui>
